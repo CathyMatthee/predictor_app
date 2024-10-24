@@ -157,5 +157,5 @@ def get_cancer_db_data():
     finally:
         session.close()
 
-if __name__ == "__main__":
-    app.run(debug=True)
+# if __name__ == "__main__":
+#     app.run(debug=True)
