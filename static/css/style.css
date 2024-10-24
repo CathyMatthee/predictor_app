@@ -1,0 +1,15 @@
+/* Custom styles for the active link */
+.nav-link.active {
+  background-color: #329cce !important; /* Change to your desired color */
+  color: white; /* Text color for active link */
+}
+
+/* Ensure non-active links have consistent styles */
+.nav-link {
+  color: #8a8e92; /* Default color */
+}
+
+.navbar-nav .nav-link:hover {
+  background-color: #0056b3; /* Hover color */
+  color: white; /* Hover text color */
+}

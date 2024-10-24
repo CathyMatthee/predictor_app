@@ -1,0 +1,37 @@
+DROP TABLE IF EXISTS "Cancer_Data";
+CREATE TABLE "Cancer_Data" (
+    "id" INT PRIMARY KEY,
+	"diagnosis" VARCHAR(1),
+	"radius_mean" DEC,
+	"texture_mean" DEC,
+	"perimeter_mean" DEC,
+    "area_mean" DEC,
+	"smoothness_mean" DEC,
+	"compactness_mean" DEC,
+	"concavity_mean" DEC,
+    "concave points_mean" DEC,
+	"symmetry_mean" DEC,
+	"fractal_dimension_mean" DEC,
+    "radius_se" DEC,
+	"texture_se" DEC,
+	"perimeter_se" DEC,
+	"area_se" DEC,
+	"smoothness_se" DEC,
+    "compactness_se" DEC,
+	"concavity_se" DEC,
+	"concave points_se" DEC,
+	"symmetry_se" DEC,
+	"fractal_dimension_se" DEC,
+	"radius_worst" DEC,
+	"texture_worst" DEC,
+    "perimeter_worst" DEC,
+	"area_worst" DEC,
+	"smoothness_worst" DEC,
+    "compactness_worst" DEC,
+	"concavity_worst" DEC,
+	"concave points_worst" DEC,
+    "symmetry_worst" DEC,
+	"fractal_dimension_worst" DEC
+);
+
+SELECT json_agg(row_to_json("Cancer_Data")) FROM "Cancer_Data";

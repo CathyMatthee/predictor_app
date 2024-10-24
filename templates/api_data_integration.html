@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Data Fetching and API Integration</title>
+    <!-- Load bootstrap -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
+    <!-- Load css -->
+    <link rel="stylesheet" href="./static/css/style.css">
+</head>
+
+<body>
+<!-- Navigation -->
+  <!-- Black horizontal navbar with white text -->
+  <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+    <div class="container-fluid">
+      <!-- Tab Panes -->
+      <ul class="nav nav-pills">
+        <li class="nav-item"><a class="nav-link" href="http://127.0.0.1:5000/">Home</a></li>
+        <li class="nav-item"><a class="nav-link" href="http://127.0.0.1:5000/Prediction">Predictor App</a></li>
+        <li class="nav-item"><a class="nav-link" href="http://127.0.0.1:5000/api_json_connectivity">API</a></li>
+        <li class="nav-item"><a class="nav-link" href="https://raw.githubusercontent.com/lhenry97/Group_1-Project_4/refs/heads/main/README.md">README.md</a></li>
+      </ul>
+    </div>
+  </nav>
+
+<!-- Run JS function to toggle active menu bar options on-->
+<script src="./static/js/script.js"></script>
+
+<!-- Header -->
+<div class="container mt-2">
+  <h1>Data Fetching and API Integration</h1>
+  <h3>Connecting to PostgreSQL with psycopg2</h3>
+  <p>This section explains how to connect to a PostgreSQL database using psycopg2 in python.</p>
+  <ol>
+    <li><strong>Install psycopg2:</strong> Use pip to install the library if you haven't already.</li>
+    <li><strong>Set Up Database Connection:</strong> Write the code to connect to your PostgreSQL database.</li>
+    <li><strong>Query the Database:</strong> Execute SQL queries to retrieve the necessary data.</li>
+    <li><strong>Set Up Flask App:</strong> Create a Flask application to serve the data.</li>
+    <li><strong>Define Routes:</strong> Create a route in Flask that handles requests and returns the data as JSON.</li>
+    <li><strong>Run the Flask App:</strong> Start your Flask app and test the endpoint.</li>
+</ol>
+  <img src="images/connection_diagram.png" alt="Connection Diagram" style="max-width: 100%; height: auto;">
+
+  <h2>Example Code</h2>
+  <pre>
+      <code>
+      import psycopg2
+
+      # Database connection parameters
+      connection = psycopg2.connect(database="your_db", user="your_user", password="your_password")
+      </code>
+  </pre>
+  <img src="images/code_snippet.png" alt="Code Snippet" style="max-width: 100%; height: auto;">
+
+  <h3>Flask Serving Data from PostgreSQL</h3>
+  <p>This section covers how Flask serves data collected from the PostgreSQL database.</p>
+  <img src="images/flask_endpoint.png" alt="Flask Endpoint" style="max-width: 100%; height: auto;">
+
+  <h2>Example Flask Code</h2>
+  <pre>
+      <code>
+      from flask import Flask, jsonify
+      import psycopg2
+
+      app = Flask(__name__)
+
+      @app.route('/db_data')
+      def get_data():
+          # Database query logic here
+          return jsonify(data)
+      </code>
+  </pre>
+</body>
+</html>
