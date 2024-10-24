@@ -13,9 +13,12 @@ from sqlalchemy.ext.automap import automap_base
 from sqlalchemy.orm import Session
 from sqlalchemy import create_engine, text
 from sqlalchemy import func
-from config import password
+# from config import password
 import psycopg2
 import joblib
+
+# Read the database password from the environment variable in AWS
+password = os.getenv('DB_PASSWORD')
 
 #################################################
 # Database Setup
