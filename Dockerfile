@@ -8,7 +8,8 @@ WORKDIR /app
 COPY requirements.txt .
 
 # Install any necessary packages specified in requirements.txt
-RUN pip install --no-cache-dir -r requirements.txt
+RUN apt-get update && apt-get install -y python3-pip && \
+    pip install --no-cache-dir -r requirements.txt
 
 # Copy the rest of your application code into the container
 COPY . .
