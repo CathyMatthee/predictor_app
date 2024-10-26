@@ -4,3 +4,4 @@ psycopg2-binary
 numpy
 joblib
 pandas
+scikit-learn

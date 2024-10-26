@@ -15,18 +15,19 @@ from sqlalchemy.orm import Session
 from sqlalchemy import create_engine, text
 from sqlalchemy import func
 # from config import password
+# from config import db_host
 import psycopg2
 import joblib
 
 # Read the database password from the environment variable in AWS for deployment
 password = os.getenv('DB_PASSWORD')
-db_host = os.getenv('DB_HOST')
+# db_host = os.getenv('DB_HOST')
 
 #################################################
 # Database Setup
 #################################################
 # Create engine using the `postgres` database file on local host
-engine = create_engine(f'postgresql://postgres:{password}@{db_host}:5432/Cancer_db')
+engine = create_engine(f'postgresql://postgres:{password}@host.docker.internal:5432/Cancer_db')
 connection = engine.connect()
 
 # Reflect Database into ORM classes
@@ -167,4 +168,4 @@ def get_cancer_db_data():
 
 if __name__ == "__main__":
     # app.run(debug=True) #local deployment
-    app.run(host='0.0.0.0', port=5000) #internet deployment
+    app.run(host='0.0.0.0', port=8080) #internet deployment
