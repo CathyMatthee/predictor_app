@@ -21,7 +21,8 @@ This dataset contains a unique anonymous ID number for each patients cancer data
 
 # Workflow for Reproducibility
 
-## Connecting to PostgreSQL with psycopg2 -->
+## Data Fetching and API Integration
+
 This section explains how to connect to a PostgreSQL database using psycopg2 in python.
 
 ### Database Setup (pgAdmin4)
