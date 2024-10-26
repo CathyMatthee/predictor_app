@@ -7,6 +7,7 @@ warnings.filterwarnings('ignore')
 
 # Import Dependencies
 import numpy as np
+import os
 from flask import Flask, jsonify, render_template, request
 import sqlalchemy
 from sqlalchemy.ext.automap import automap_base
@@ -17,7 +18,7 @@ from sqlalchemy import func
 import psycopg2
 import joblib
 
-# Read the database password from the environment variable in AWS
+# Read the database password from the environment variable in AWS for deployment
 password = os.getenv('DB_PASSWORD')
 
 #################################################
@@ -40,6 +41,11 @@ cd = Base.classes.Cancer_Data
 #################################################
 
 app = Flask(__name__)
+
+# Load the pre-trained logistic regression model
+model = joblib.load('Logistic_Regression_Model/FeatureReduced_logistic_regression_model.pkl')
+scaler = joblib.load('Logistic_Regression_Model/scaler_reduced.pkl')  # Load the new scaler fitted on 11 features
+
 
 #################################################
 # Flask Routes
@@ -95,15 +101,13 @@ def optimisations():
     print("Server received request for 'Lauren Evaluatiion of Models' page...")  
     return render_template("optimise.html")
 
-@app.route('/Zarahs')
-def zarah():
-    # Step 3: Load the pre-trained logistic regression model and the refitted scaler
-    model = joblib.load('Logistic_Regression_Model/FeatureReduced_logistic_regression_model.pkl')
-    scaler = joblib.load('Logistic_Regression_Model/scaler_reduced.pkl')  # Load the new scaler fitted on 11 features
-    return render_template('result.html')
-
-@app.route('/Prediction', methods=['POST'])
+@app.route('/Prediction')
 def prediction():
+    # Step 3: Load the pre-trained logistic regression model and the refitted scaler
+    return render_template('prediction_app.html')
+
+@app.route('/Result', methods=['POST'])
+def result():
     print("Server received request for 'Ensemble Evaluatiion of Models' page...")  
     # Collect input data from the form for the selected 11 features
     input_features = [
@@ -130,7 +134,7 @@ def prediction():
     prediction = model.predict(scaled_features)
 
     # Render the result page with the prediction
-    return render_template('prediction_app.html', prediction_text=f'The predicted class is: {prediction[0]}')
+    return render_template('result.html', prediction_text=f'The predicted class is: {prediction[0]}')
 
 @app.route('/Conclude')
 def conclusion():
@@ -160,5 +164,6 @@ def get_cancer_db_data():
     finally:
         session.close()
 
-# if __name__ == "__main__":
-#     app.run(debug=True)
+if __name__ == "__main__":
+    # app.run(debug=True) #local deployment
+    app.run() #internet deployment

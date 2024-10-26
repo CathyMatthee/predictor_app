@@ -13,3 +13,35 @@
   background-color: #0056b3; /* Hover color */
   color: white; /* Hover text color */
 }
+
+/* Custom style for the title */
+h1 {
+  font-size: 2rem; /* Increase font size */
+  margin-bottom: 1rem; /* Adjust margin */
+  text-align: center; /* Center the title */
+  color: #333; /* Set title color to dark gray */
+}
+
+/* Custom button style */
+.btn-custom {
+  background-color: #329cce; /* Custom button color */
+  color: white; /* Button text color */
+  border: none; /* Remove border */
+}
+
+/* Adjust button on hover */
+.btn-custom:hover {
+  background-color: #287bb5; /* Darker shade for hover */
+}
+
+/* Container background color */
+.bg-light-blue {
+  background-color: #329dce71; /* Muted blue background */
+}
+
+/* Align the container to the left with padding */
+.container {
+  margin-left: 25px; /* Add left margin for spacing */
+  margin-right: auto; /* Keep right margin auto to align left */
+  max-width: 600px; /* Optional: set a max-width */
+}
