@@ -6,8 +6,8 @@ The purpose for this project is to assist with breast cancer survial through ear
 # Dataset Link: 
 https://www.kaggle.com/datasets/erdemtaha/cancer-data/data
 
-# Screenshots:
-https://github.com/CathyMatthee/predictor_app/blob/main/images/proposal.png
+# Inspiration:
+![Proposal Inspiration](https://github.com/CathyMatthee/predictor_app/blob/main/images/proposal.png)
 
 # Method
 The data will undergo cleaning and removal of any duplications or unnecessary data. Feature engineering will then be conducted on the dataset to ensure the data is in a usable state for machine learning. Postgres will be used to manage the database and the app.py flask app will be used to connect to the database to enable a website to call information from it. A number of machine learning models will be tested and evaluated on their prediction of the cancer diagnosis. The models include logistic regression, SVM, random forest and potentially Deep Neural Network. Each model will undergo optimisation and then they will be evaluated to select the best model. The selected machine learning model will then be used in the final website. The website will look similar to the above screenshot to enable a user to alter different visual characteristics and the model will output a predicted diagnosis.
@@ -46,4 +46,4 @@ This section explains how to connect to a PostgreSQL database using psycopg2 in 
 5. In git bash terminal activate your dev environment from the local repo and run "python app.py" to make a connection to the database wher the Flask app will serve the database data in JSON, dynamically to the machine learning models, ensuring they are trained on the most up-to-date data. 
 6. Select the CTRL+click on the link that is output in the bash terminal that deploys the Flask locally in a window.
 7. Select the "Predictor_App" option in the top navigation bar to go straight to the machine learning app that will predict cancer.
-https://github.com/CathyMatthee/predictor_app/blob/main/images/Predictor%20App.png
+![Predictor App](https://github.com/CathyMatthee/predictor_app/blob/main/images/Predictor%20App.png)
