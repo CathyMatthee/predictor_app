@@ -167,4 +167,4 @@ def get_cancer_db_data():
 
 if __name__ == "__main__":
     # app.run(debug=True) #local deployment
-    app.run() #internet deployment
+    app.run(host='0.0.0.0', port=5000) #internet deployment
