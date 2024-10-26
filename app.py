@@ -20,12 +20,13 @@ import joblib
 
 # Read the database password from the environment variable in AWS for deployment
 password = os.getenv('DB_PASSWORD')
+db_host = os.getenv('DB_HOST')
 
 #################################################
 # Database Setup
 #################################################
 # Create engine using the `postgres` database file on local host
-engine = create_engine(f'postgresql://postgres:{password}@localhost:5432/Cancer_db')
+engine = create_engine(f'postgresql://postgres:{password}@{db_host}:5432/Cancer_db')
 connection = engine.connect()
 
 # Reflect Database into ORM classes
