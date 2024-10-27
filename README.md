@@ -53,10 +53,42 @@ This section explains how to connect to a PostgreSQL database using psycopg2 in 
 7. Select the "Predictor_App" option in the top navigation bar to go straight to the machine learning app that will predict cancer.
 <img src="https://github.com/CathyMatthee/predictor_app/blob/main/images/Predictor%20App.png" alt="Predictor App" width="300"/>
 
-### 4 Models Initial Accuracy
+# Machine Learning Model Builds
+
+## Logistic Regression Model 1
+
+### Overview
+This part of the project focuses on building a logistic regression model to classify outcomes based on the dataset. The model was developed and trained to predict binary outcomes (such as B for Benign and M for Malignant in cancer diagnosis). Key steps included data preprocessing, training the model using default settings, and further improving performance through hyperparameter tuning with GridSearchCV.
+
+Additionally, feature selection was attempted, followed by tuning and evaluation to compare the performance of the model with selected features against the one trained with all features. Here, we aimed to determine if the feature-selected model performed similarly for conversion into an app.
+
+### Contents
+- **Logistic_Regression_Model_1_ZR.ipynb**: This notebook contains the entire workflow of the logistic regression analysis, including data preprocessing, feature selection, model training, and evaluation results.
+- **tuned_logistic_regression_model.pkl**: A saved version of the trained logistic regression model, which can be used for future predictions.
+
+### Steps
+1. **Data Preprocessing**: The dataset was cleaned by removing irrelevant columns, treating skewness of the data, and removing outliers. Categorical variables were encoded, and numerical features were scaled.
+  
+2. **Feature Selection**: Features were selected using Recursive Feature Elimination (RFE) to enhance model performance.
+
+3. **Model Training**: The logistic regression model was trained using the scikit-learn library. Hyperparameter tuning was performed to optimize the model's performance using GridSearchCV.
+
+### Model Evaluation
+The model was evaluated using accuracy, precision, recall, F1 score, and confusion matrices using test data.
+
+### Results
+The model's performance slightly decreased after feature selection, which is reflected in:
+- A small drop in accuracy (from 98% to 96%).
+- Minor drops in precision and F1-scores for class 1 (malignant).
+- A slight increase in misclassifications for class 0 (benign) from 1 to 2.
+
+Therefore, feature selection with RFE slightly reduced the model's ability to differentiate between the classes. The full feature model performed better than the feature-selected model for logistic regression.
+
+### Next Steps
+We explored other machine learning algorithms such as Random Forest, SVM, or Neural Networks to compare performance.
 
 
-### Looking Forward
+# Looking Forward/Conclusion
 1. Additional data will continue to promote model performance and the app could be used globally to collect data that doctors input into the app.
 2. Use an ensemble approach using all the models where the ideal algorithm has low bias (accurately models the true relationshio in the data) and low variability (producing consistent predictions across different datasets).
 

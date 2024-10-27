@@ -27,13 +27,63 @@
     </div>
   </nav>
 
+      <div class="container mt-4">
+          <h1>Logistic Regression Model 1</h1>
+  
+          <h2>Overview</h2>
+          <p>
+              This part of the project focuses on building a logistic regression model to classify outcomes based on the dataset. 
+              The model was developed and trained to predict binary outcomes (such as B for Benign and M for Malignant in cancer diagnosis). 
+              Key steps included data preprocessing, training the model using default settings, and further improving performance 
+              through hyperparameter tuning with GridSearchCV.
+          </p>
+          <p>
+              Additionally, feature selection was attempted, followed by tuning and evaluation to compare the performance of the 
+              model with selected features against the one trained with all features. Here, we aimed to determine if the 
+              feature-selected model performed similarly for conversion into an app.
+          </p>
+  
+          <h2>Contents</h2>
+          <ul>
+              <li><strong>Logistic_Regression_Model_1_ZR.ipynb</strong>: This notebook contains the entire workflow of the logistic regression analysis, including data preprocessing, feature selection, model training, and evaluation results.</li>
+              <li><strong>tuned_logistic_regression_model.pkl</strong>: A saved version of the trained logistic regression model, which can be used for future predictions.</li>
+          </ul>
+  
+          <h2>Steps</h2>
+          <ol>
+              <li><strong>Data Preprocessing</strong>: The dataset was cleaned by removing irrelevant columns, treating skewness of the data, and removing outliers. Categorical variables were encoded, and numerical features were scaled.</li>
+              <li><strong>Feature Selection</strong>: Features were selected using Recursive Feature Elimination (RFE) to enhance model performance.</li>
+              <li><strong>Model Training</strong>: The logistic regression model was trained using the scikit-learn library. Hyperparameter tuning was performed to optimize the model's performance using GridSearchCV.</li>
+          </ol>
+  
+          <h2>Model Evaluation</h2>
+          <p>
+              The model was evaluated using accuracy, precision, recall, F1 score, and confusion matrices using test data.
+          </p>
+  
+          <h2>Results</h2>
+          <p>
+              The model's performance slightly decreased after feature selection, which is reflected in:
+          </p>
+          <ul>
+              <li>A small drop in accuracy (from 98% to 96%).</li>
+              <li>Minor drops in precision and F1-scores for class 1 (malignant).</li>
+              <li>A slight increase in misclassifications for class 0 (benign) from 1 to 2.</li>
+          </ul>
+          <p>
+              Therefore, feature selection with RFE slightly reduced the model's ability to differentiate between the classes. 
+              The full feature model performed better than the feature-selected model for logistic regression.
+          </p>
+  
+          <h2>Next Steps</h2>
+          <p>
+              We explored other machine learning algorithms such as Random Forest, SVM, or Neural Networks to compare performance.
+          </p>
+      </div>
+
+  
 <!-- Run JS function to toggle active menu bar options on-->
 <script src="./static/js/script.js"></script>
-
-<!-- Header -->
-<div class="container mt-2">
-  <h1>Linear Regression Model</h1>
-  </div>
 
 </body>
 </html>
