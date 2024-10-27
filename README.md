@@ -6,6 +6,9 @@ The purpose for this project is to assist with breast cancer survial through ear
 # Dataset Link: 
 https://www.kaggle.com/datasets/erdemtaha/cancer-data/data
 
+# Slide Deck:
+https://www.canva.com/design/DAGUqhcvQm0/zgpipBtmAcZnmDA6aaSEtw/edit?utm_content=DAGUqhcvQm0&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton
+
 # Inspiration:
 <img src="https://github.com/CathyMatthee/predictor_app/blob/main/images/proposal.png" alt="Proposal Inspiration" width="300"/>
 
@@ -49,3 +52,16 @@ This section explains how to connect to a PostgreSQL database using psycopg2 in 
 6. Select the CTRL+click on the link that is output in the bash terminal that deploys the Flask locally in a window.
 7. Select the "Predictor_App" option in the top navigation bar to go straight to the machine learning app that will predict cancer.
 <img src="https://github.com/CathyMatthee/predictor_app/blob/main/images/Predictor%20App.png" alt="Predictor App" width="300"/>
+
+### 4 Models Initial Accuracy
+
+
+### Looking Forward
+1. Additional data will continue to promote model performance and the app could be used globally to collect data that doctors input into the app.
+2. Use an ensemble approach using all the models where the ideal algorithm has low bias (accurately models the true relationshio in the data) and low variability (producing consistent predictions across different datasets).
+
+### Sources
+    - W3 Schools code used to build app navigation https://www.w3schools.com/bootstrap5/bootstrap_navs.php 
+    - Chat gpt and Codepen used to convert README.md file into html and css formating for the web app pages including the predictor app.
+    - Flask linking html pages: https://www.youtube.com/watch?v=VyICzbnf6q4
+    - App runner web deployment: https://farzam.at/en/blog/deploy-flask-apps-aws-app-runner

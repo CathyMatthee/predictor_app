@@ -45,11 +45,6 @@ cd = Base.classes.Cancer_Data
 
 app = Flask(__name__)
 
-# Load the pre-trained logistic regression model
-model = joblib.load('Logistic_Regression_Model/FeatureReduced_logistic_regression_model.pkl')
-scaler = joblib.load('Logistic_Regression_Model/scaler_reduced.pkl')  # Load the new scaler fitted on 11 features
-
-
 #################################################
 # Flask Routes
 #################################################
@@ -111,33 +106,64 @@ def prediction():
 
 @app.route('/Result', methods=['POST'])
 def result():
-    print("Server received request for 'Ensemble Evaluatiion of Models' page...")  
-    # Collect input data from the form for the selected 11 features
-    input_features = [
-        float(request.form['area_mean']),
-        float(request.form['concave_points_mean']),
-        float(request.form['radius_worst']),
-        float(request.form['texture_worst']),
-        float(request.form['perimeter_worst']),
-        float(request.form['area_worst']),
-        float(request.form['smoothness_worst']),
-        float(request.form['concave_points_worst']),
-        float(request.form['symmetry_worst']),
-        float(request.form['area_se']),
-        float(request.form['radius_se'])  
-    ]
+    print("Server received request for 'Prediction Result' page...")
 
-    # Convert input features into a NumPy array with shape (1, 11)
-    features = np.array(input_features).reshape(1, -1)
+    try:   
+    # Collect input data from the form for the selected 30 features
+        input_features = [
+            float(request.form['area_mean']),
+            float(request.form['area_worst']),
+            float(request.form['compactness_mean']),
+            float(request.form['compactness_se']),
+            float(request.form['compactness_worst']),
+            float(request.form['concave points_mean']),
+            float(request.form['concave points_se']),
+            float(request.form['concave points_worst']),
+            float(request.form['concavity_mean']),
+            float(request.form['concavity_worst']),
+            float(request.form['fractal_dimension_mean']),
+            float(request.form['fractal_dimension_worst']),
+            float(request.form['perimeter_mean']),
+            float(request.form['perimeter_worst']),
+            float(request.form['radius_mean']),
+            float(request.form['radius_worst']),
+            float(request.form['smoothness_mean']),
+            float(request.form['smoothness_se']),
+            float(request.form['smoothness_worst']),
+            float(request.form['symmetry_mean']),
+            float(request.form['symmetry_se']),
+            float(request.form['symmetry_worst']),
+            float(request.form['texture_mean']),
+            float(request.form['texture_se']),
+            float(request.form['texture_worst']),
+            float(request.form['area_se']),
+            float(request.form['concavity_se']),
+            float(request.form['perimeter_se']),
+            float(request.form['radius_se']),
+            float(request.form['fractal_dimension_se']) 
+        ]
 
-    # Step 4: Scale the input features using the new refitted scaler
-    scaled_features = scaler.transform(features)
+        # Convert input features into a NumPy array with shape (1, 30)
+        features = np.array(input_features).reshape(1, -1)
+        # Step 3: Load the pre-trained logistic regression model
+        model = joblib.load('Logistic_Regression_Model/FeatureReduced_logistic_regression_model.pkl')
+        scaler = joblib.load('Logistic_Regression_Model/scaler_reduced.pkl')  # Load the new scaler fitted on 11 features
 
-    # Make a prediction using the scaled features
-    prediction = model.predict(scaled_features)
+        # Step 4: Scale the input features using the new refitted scaler
+        scaled_features = scaler.transform(features)
 
-    # Render the result page with the prediction
-    return render_template('result.html', prediction_text=f'The predicted class is: {prediction[0]}')
+        # Make a prediction using the scaled features
+        prediction = model.predict(scaled_features)
+
+        # Optionally, get the predicted class or probability
+        prediction_text = "Malignant" if prediction[0] == 1 else "Benign"  # Assuming binary classification
+
+        # Render the result page with the prediction
+        return render_template('result.html', prediction_text=f'The logistic regression model predicted class is: {prediction[0]} which is {prediction_text}')
+    except ValueError as e:
+        return render_template('result.html', prediction_text=f'The predicted class is not determined.')
+    except Exception as e:
+        return render_template('result.html', prediction_text=f'The predicted class is not determined.')
 
 @app.route('/Conclude')
 def conclusion():

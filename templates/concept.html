@@ -20,6 +20,7 @@
       <!-- Tab Panes -->
       <ul class="nav nav-pills">
         <li class="nav-item"><a class="nav-link" href="http://127.0.0.1:5000/">Home</a></li>
+        <li class="nav-item"><a class="nav-link active" href="http://127.0.0.1:5000/Concept_Ideation">Concept Ideation</a></li>
         <li class="nav-item"><a class="nav-link" href="http://127.0.0.1:5000/Prediction">Predictor App</a></li>
         <li class="nav-item"><a class="nav-link" href="http://127.0.0.1:5000/api_json_connectivity">API</a></li>
         <li class="nav-item"><a class="nav-link" href="https://raw.githubusercontent.com/lhenry97/Group_1-Project_4/refs/heads/main/README.md">README.md</a></li>
@@ -33,7 +34,56 @@
 <!-- Header -->
 <div class="container mt-2">
   <h1>Concept Ideation</h1>
-  </div>
+  <!-- Content Start --> 
+    <p>
+      The purpose of this project is to assist with breast cancer survival through early intervention. A website will be created for the use of doctors, which will contain user-inputted data based on the visual characteristics of a cancer. A machine learning model will be used to predict a diagnosis on whether the identified cancer is Benign or Malignant based on these visual characteristics. The features that will be used to assist in determining the diagnosis include: mean radius, mean texture, mean perimeter, mean area, mean smoothness, mean compactness, mean concavity, and mean concave points. The dataset identified for this project is the Breast Cancer Wisconsin (Diagnostic) Data Set.
+  </p>
+
+  <h3>Dataset Link</h3>
+  <p>
+      <a href="https://www.kaggle.com/datasets/erdemtaha/cancer-data/data" target="_blank">Breast Cancer Wisconsin (Diagnostic) Data Set</a>
+  </p>
+
+  <h3>Proposal Inspiration</h3>
+  <figure>
+    <img src="https://raw.githubusercontent.com/CathyMatthee/predictor_app/main/images/proposal.png" alt="pgAdmin 4" width="500" />
+  </figure>
+
+  <h3>Method</h3>
+  <p>
+      The data will undergo cleaning and removal of any duplications or unnecessary data. Feature engineering will then be conducted on the dataset to ensure the data is in a usable state for machine learning. Postgres will be used to manage the database, and the app.py Flask app will be used to connect to the database to enable a website to call information from it. A number of machine learning models will be tested and evaluated on their prediction of the cancer diagnosis. The models include logistic regression, SVM, random forest, and potentially Deep Neural Network. Each model will undergo optimization and then will be evaluated to select the best model. The selected machine learning model will then be used in the final website. The website will look similar to the above screenshot to enable a user to alter different visual characteristics, and the model will output a predicted diagnosis.
+  </p>
+
+  <h3>Licensing</h3>
+  <p>
+      This data has a <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0 License</a>.
+  </p>
+
+  <h3>Ethics</h3>
+  <p>
+      This dataset contains a unique anonymous ID number for each patient's cancer data. This is not considered personally identifiable information as it is not linked back to any specific personal information of that patient, such as a driver's license number or social security number.
+  </p>
+
+  <h3>Sources</h3>
+  <p>
+    <ul>
+      <li>
+          <a href="https://www.w3schools.com/bootstrap5/bootstrap_navs.php" target="_blank">W3 Schools code used to build app navigation</a>
+      </li>
+      <li>
+          ChatGPT and CodePen used to convert README.md file into HTML and CSS formatting for the web app pages including the predictor app.
+      </li>
+      <li>
+          <a href="https://www.youtube.com/watch?v=VyICzbnf6q4" target="_blank">Flask linking HTML pages</a>
+      </li>
+      <li>
+          <a href="https://farzam.at/en/blog/deploy-flask-apps-aws-app-runner" target="_blank">App runner web deployment</a>
+      </li>
+  </ul>
+  </p>
+  
+<!-- content end -->
+</div>
 
 </body>
 </html>

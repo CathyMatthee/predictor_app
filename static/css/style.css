@@ -27,6 +27,8 @@ h1 {
   background-color: #329cce; /* Custom button color */
   color: white; /* Button text color */
   border: none; /* Remove border */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Add shadow effect */
+  transition: box-shadow 0.3s ease; /* Smooth transition for the shadow */
 }
 
 /* Adjust button on hover */
@@ -37,6 +39,7 @@ h1 {
 /* Container background color */
 .bg-light-blue {
   background-color: #329dce71; /* Muted blue background */
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Adjust values as needed */
 }
 
 /* Align the container to the left with padding */
@@ -45,3 +48,15 @@ h1 {
   margin-right: auto; /* Keep right margin auto to align left */
   max-width: 600px; /* Optional: set a max-width */
 }
+
+/* Style for narrow input fields */
+.narrow-input {
+  width: 100%; /* Make fields take 50% of their parent container */
+  max-width: 150px; /* Limit the maximum width */
+}
+
+/* Reduce margin below labels */
+.form-label {
+  margin-bottom: 0.1rem; /* Adjust as needed */
+}
+
