@@ -18,6 +18,8 @@ from config import password
 from config import db_host
 import psycopg2
 import joblib
+from sklearn.ensemble import VotingClassifier
+import statistics as st
 
 # Read the database password from the environment variable in AWS for deployment
 # password = os.getenv('DB_PASSWORD')
@@ -165,27 +167,34 @@ def result():
         # model_2 = joblib.load('Saved_Models/tunned_model_svm.pkl') # Model 2: Load the pre-trained SVM
         model_3 = joblib.load('Saved_Models/rf_model.pkl') # Model 3: Load the pre-trained Random Forest
         model_4 = joblib.load('Saved_Models/kt_best_model.pkl') # Model 4: Load the pre-trained Keras Tuner
-        # Model 5: Load the pre-trained Ensemble Method
 
         # Make a prediction using the scaled features
         prediction_1 = model_1.predict(features)
+        print(prediction_1)
         # prediction_2 = model_2.predict(features)
         prediction_3 = model_3.predict(features)
+        print(prediction_3)
         prediction_4 = model_4.predict(features)
+        print(int(np.ravel(prediction_4)))
+                
         # prediction_5 = model_5.predict(model_5)
+        # FINAL_PREDICTION
+        prediction_5 = st.mode([prediction_1[0], prediction_3[0], int(np.ravel(prediction_4))])
+        print(prediction_5)
 
         log_pred_text_1 = "Malignant" if prediction_1[0] == 1 else "Benign"  # Assuming binary classification
         # log_pred_text_2 = "Malignant" if prediction_2[0] == 1 else "Benign"  # Assuming binary classification
         log_pred_text_3 = "Malignant" if prediction_3[0] == 1 else "Benign"  # Assuming binary classification
-        log_pred_text_4 = "Malignant" if prediction_4[0] == 1 else "Benign"  # Assuming binary classification
-        # log_pred_text_5 = "Malignant" if prediction_5[0] == 1 else "Benign"  # Assuming binary classification
+        log_pred_text_4 = "Malignant" if prediction_4 == 1 else "Benign"  # Assuming binary classification
+        log_pred_text_5 = "Malignant" if prediction_5 == 1 else "Benign"  # Assuming binary classification
 
         # Create prediction text
         prediction_text = (
             f'Logistic Regression Class Prediction: {prediction_1[0]} = {log_pred_text_1}<br>'
             # f'SVM Class Prediction: {prediction_2[0]} = {log_pred_text_2}<br>'
             f'Random Forest Class Prediction: {prediction_3[0]} = {log_pred_text_3}<br>'
-            f'Keras Tuner Class Prediction: {prediction_4[0]} = {log_pred_text_4}'
+            f'Keras Tuner Class Prediction: {prediction_4} = {log_pred_text_4}<br>'
+            f'Ensemble Method Class Prediction: {prediction_5} = {log_pred_text_5}'
         )
         
         # Render the result page with the prediction
