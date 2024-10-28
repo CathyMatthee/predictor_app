@@ -29,7 +29,7 @@
 <!-- Results Container -->
 <div class="container mt-4 col-md-8 bg-light-blue p-3 rounded">
     <h1 class="text-center">Prediction Results</h1>
-    <p class="text-center">{{ log_pred }}</p>
+    <p class="text-center">{{ prediction_text|safe }}</p>
 
     <div class="d-flex justify-content-center mt-3">
         <a class="btn btn-secondary me-2" href="http://127.0.0.1:5000/">Home</a>
