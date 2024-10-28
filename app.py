@@ -72,7 +72,7 @@ def visualisations():
 @app.route("/Zahra_LR")
 def logistic_regression():
     print("Server received request for 'Zahra's Logistic Regression Model' page...")
-    return render_template("lin_reg_model.html")
+    return render_template("log_reg_model.html")
 
 @app.route('/Jess_Aria_SVM')
 def SVM():
@@ -121,6 +121,7 @@ def result():
             float(request.form['concave points_worst']),
             float(request.form['concavity_mean']),
             float(request.form['concavity_worst']),
+
             float(request.form['fractal_dimension_mean']),
             float(request.form['fractal_dimension_worst']),
             float(request.form['perimeter_mean']),
@@ -131,6 +132,7 @@ def result():
             float(request.form['smoothness_se']),
             float(request.form['smoothness_worst']),
             float(request.form['symmetry_mean']),
+
             float(request.form['symmetry_se']),
             float(request.form['symmetry_worst']),
             float(request.form['texture_mean']),
@@ -143,23 +145,66 @@ def result():
             float(request.form['fractal_dimension_se']) 
         ]
 
-        # Convert input features into a NumPy array with shape (1, 30)
+        # Convert input features into a NumPy array with shape (1, 32)
         features = np.array(input_features).reshape(1, -1)
-        # Step 3: Load the pre-trained logistic regression model
-        model = joblib.load('Logistic_Regression_Model/FeatureReduced_logistic_regression_model.pkl')
-        scaler = joblib.load('Logistic_Regression_Model/scaler_reduced.pkl')  # Load the new scaler fitted on 11 features
-
         # Step 4: Scale the input features using the new refitted scaler
-        scaled_features = scaler.transform(features)
+        
+        # scaled_features = scaler.transform(features)
+        # Model 1: Load the pre-trained Logistic Regression Model
+        model_1 = joblib.load('Saved_Models/tuned_logistic_regression_model.pkl')
+        # scaler = joblib.load('Saved_Models/scaler.pkl')
+        # Model 2: Load the pre-trained SVM
+        model_2 = joblib.load('Saved_Models/tunned_model_svm.pkl')
+        # Model 3: Load the pre-trained Random Forest
+        model_3 = joblib.load('Saved_Models/rf_model.pkl')
+        # Model 4: Load the pre-trained Keras Tuner
+        model_4 = joblib.load('Saved_Models/kt_best_model.pkl')
+        # Model 5: Load the pre-trained Ensemble Method
+
+
 
         # Make a prediction using the scaled features
-        prediction = model.predict(scaled_features)
-
+        prediction_1 = model_1.predict(features)
+        prediction_2 = model_2.predict(features)
+        prediction_3 = model_3.predict(features)
+        prediction_4 = model_4.predict(features)
+        # prediction_5 = model_5.predict(model_5)
+        
         # Optionally, get the predicted class or probability
-        prediction_text = "Malignant" if prediction[0] == 1 else "Benign"  # Assuming binary classification
+        # Get the predicted class or probability
+        # Prepare predictions text
 
+        log_pred_text_1 = "Malignant" if prediction_1[0] == 1 else "Benign"  # Assuming binary classification
+        log_pred_text_2 = "Malignant" if prediction_2[0] == 1 else "Benign"  # Assuming binary classification
+        log_pred_text_3 = "Malignant" if prediction_3[0] == 1 else "Benign"  # Assuming binary classification
+        log_pred_text_4 = "Malignant" if prediction_4[0] == 1 else "Benign"  # Assuming binary classification
+        # log_pred_text_1 = "Malignant" if log_prediction[0] == 1 else "Benign"  # Assuming binary classification
+
+        # predictions_text = {
+        #     'Logistic Regression': f"Class Value: {prediction_1[0]} - Label: {'Malignant' if prediction_1[0] == 1 else 'Benign'}",
+        #     'SVM': f"Class Value: {prediction_2[0]} - Label: {'Malignant' if prediction_2[0] == 1 else 'Benign'}",
+        #     'Random Forest': f"Class Value: {prediction_3[0]} - Label: {'Malignant' if prediction_3[0] == 1 else 'Benign'}",
+        #     'Keras Tuner': f"Class Value: {prediction_4[0]} - Label: {'Malignant' if prediction_4[0] == 1 else 'Benign'}",
+        # }
+
+        # log_pred_text_5 = "Malignant" if prediction_5[0] == 1 else "Benign"  # Assuming binary classification
+        # print(predictions_text)
         # Render the result page with the prediction
-        return render_template('result.html', prediction_text=f'The logistic regression model predicted class is: {prediction[0]} which is {prediction_text}')
+        return render_template('result.html', log_pred=(
+            f'Logistic Regression Class Prediction: {prediction_1[0]} = {log_pred_text_1}'
+            f'SVM Class Prediction: {prediction_2[0]} = {log_pred_text_2}'
+            f'SVM Class Prediction: {prediction_3[0]} = {log_pred_text_3}'
+            f'SVM Class Prediction: {prediction_4[0]} = {log_pred_text_4}'
+        ))
+
+        #      return render_template('result.html', predictions=f'{
+        #     'Logistic Regression': f"Class Value: {prediction_1[0]} - Label: {'Malignant' if prediction_1[0] == 1 else 'Benign'}",
+        #     'SVM': f"Class Value: {prediction_2[0]} - Label: {'Malignant' if prediction_2[0] == 1 else 'Benign'}",
+        #     'Random Forest': f"Class Value: {prediction_3[0]} - Label: {'Malignant' if prediction_3[0] == 1 else 'Benign'}",
+        #     'Keras Tuner': f"Class Value: {prediction_4[0]} - Label: {'Malignant' if prediction_4[0] == 1 else 'Benign'}",
+        # }')
+        
+
     except ValueError as e:
         return render_template('result.html', prediction_text=f'The predicted class is not determined.')
     except Exception as e:

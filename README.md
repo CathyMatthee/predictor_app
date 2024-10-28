@@ -87,6 +87,11 @@ Therefore, feature selection with RFE slightly reduced the model's ability to di
 ### Next Steps
 We explored other machine learning algorithms such as Random Forest, SVM, or Neural Networks to compare performance.
 
+## Support Vector Machine Model 1
+
+## Random Forest Model 3
+
+## Keras Tuner Model 4
 
 # Looking Forward/Conclusion
 1. Additional data will continue to promote model performance and the app could be used globally to collect data that doctors input into the app.

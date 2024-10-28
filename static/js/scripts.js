@@ -26,7 +26,8 @@ function populateFields(selectedID) {
                 "fractal_dimension_mean", 
                 "fractal_dimension_worst", 
                 "perimeter_mean", 
-                "perimeter_worst", 
+                "perimeter_worst",
+                 
                 "radius_mean", 
                 "radius_worst", 
                 "smoothness_mean", 

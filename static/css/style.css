@@ -55,8 +55,20 @@ h1 {
   max-width: 150px; /* Limit the maximum width */
 }
 
-/* Reduce margin below labels */
+/* Custom CSS for compactness */
+.mb-3 {
+  margin-bottom: 0.5rem; /* Reduced margin */
+}
+
 .form-label {
-  margin-bottom: 0.1rem; /* Adjust as needed */
+  margin-bottom: 0.2rem; /* Reduced label margin */
+}
+
+.form-control {
+  height: 2rem; /* Adjust height of inputs */
+}
+
+.btn {
+  margin-top: 0.5rem; /* Slight margin for buttons */
 }
 

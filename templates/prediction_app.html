@@ -26,7 +26,7 @@
     </nav>
 
     <!-- Header -->
-    <div class="container mt-4 col-md-6 bg-light-blue p-3 rounded">
+    <div class="container mt-4 col-md-8 bg-light-blue p-3 rounded">
         <h1 class="text-center">Cancer Predictor App</h1>
 
         <form action="/Result" method="POST" class="mb-2">
@@ -46,43 +46,74 @@
 
             <div class="row">
                 <!-- LEFT Input fields for each feature -->
-                <div class="col-md-6">
+                <div class="col-md-4">
                     <div class="mb-3">
                         <label for="area_mean" class="form-label">Area Mean:</label>
                         <input type="text" name="area_mean" class="form-control form-control-sm" required>
-                    </div>
-                    <div class="mb-3">
-                        <label for="compactness_mean" class="form-label">Compactness Mean:</label>
-                        <input type="text" name="compactness_mean" class="form-control form-control-sm" required>
-                    </div>
-                    <div class="mb-3">
-                        <label for="concave points_mean" class="form-label">Concave Points Mean:</label>
-                        <input type="text" name="concave points_mean" class="form-control form-control-sm" required>
-                    </div>
-                    <div class="mb-3">
-                        <label for="concavity_mean" class="form-label">Concavity Mean:</label>
-                        <input type="text" name="concavity_mean" class="form-control form-control-sm" required>
-                    </div>
-                    <div class="mb-3">
-                        <label for="fractal_dimension_mean" class="form-label">Fractal Dimension Mean:</label>
-                        <input type="text" name="fractal_dimension_mean" class="form-control form-control-sm" required>
                     </div>
                     <div class="mb-3">
                         <label for="area_worst" class="form-label">Area Worst:</label>
                         <input type="text" name="area_worst" class="form-control form-control-sm" required>
                     </div>
                     <div class="mb-3">
+                        <label for="compactness_mean" class="form-label">Compactness Mean:</label>
+                        <input type="text" name="compactness_mean" class="form-control form-control-sm" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="compactness_se" class="form-label">Compactness SE:</label>
+                        <input type="text" name="compactness_se" class="form-control form-control-sm" required>
+                    </div>
+                    <div class="mb-3">
                         <label for="compactness_worst" class="form-label">Compactness Worst:</label>
                         <input type="text" name="compactness_worst" class="form-control form-control-sm" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="concave points_mean" class="form-label">Concave Points Mean:</label>
+                        <input type="text" name="concave points_mean" class="form-control form-control-sm" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="concave points_se" class="form-label">Concave Points SE:</label>
+                        <input type="text" name="concave points_se" class="form-control form-control-sm" required>
                     </div>
                     <div class="mb-3">
                         <label for="concave points_worst" class="form-label">Concave Points Worst:</label>
                         <input type="text" name="concave points_worst" class="form-control form-control-sm" required>
                     </div>
+                    <div class="mb-3">
+                        <label for="concavity_mean" class="form-label">Concavity Mean:</label>
+                        <input type="text" name="concavity_mean" class="form-control form-control-sm" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="concavity_worst" class="form-label">Concavity Worst:</label>
+                        <input type="text" name="concavity_worst" class="form-control form-control-sm" required>
+                    </div>
                 </div>
-
-                <!-- RIGHT Input fields for each feature -->
-                <div class="col-md-6">
+                <!-- MIDDLE Input fields for each feature -->
+                <div class="col-md-4">
+                    <div class="mb-3">
+                        <label for="fractal_dimension_mean" class="form-label">Fractal Dimens Mean:</label>
+                        <input type="text" name="fractal_dimension_mean" class="form-control form-control-sm" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="fractal_dimension_worst" class="form-label">Fractal Dimens Worst:</label>
+                        <input type="text" name="fractal_dimension_worst" class="form-control form-control-sm" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="perimeter_mean" class="form-label">Perimeter Mean:</label>
+                        <input type="text" name="perimeter_mean" class="form-control form-control-sm" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="perimeter_worst" class="form-label">Perimeter Worst:</label>
+                        <input type="text" name="perimeter_worst" class="form-control form-control-sm" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="radius_mean" class="form-label">Radius Mean:</label>
+                        <input type="text" name="radius_mean" class="form-control form-control-sm" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="radius_worst" class="form-label">Radius Worst:</label>
+                        <input type="text" name="radius_worst" class="form-control form-control-sm" required>
+                    </div>
                     <div class="mb-3">
                         <label for="smoothness_mean" class="form-label">Smoothness Mean:</label>
                         <input type="text" name="smoothness_mean" class="form-control form-control-sm" required>
@@ -98,7 +129,10 @@
                     <div class="mb-3">
                         <label for="symmetry_mean" class="form-label">Symmetry Mean:</label>
                         <input type="text" name="symmetry_mean" class="form-control form-control-sm" required>
-                    </div>
+                    </div>                 
+                </div>
+                <!-- RIGHT Input fields for each feature -->
+                <div class="col-md-4">
                     <div class="mb-3">
                         <label for="symmetry_se" class="form-label">Symmetry SE:</label>
                         <input type="text" name="symmetry_se" class="form-control form-control-sm" required>
@@ -115,17 +149,43 @@
                         <label for="texture_se" class="form-label">Texture SE:</label>
                         <input type="text" name="texture_se" class="form-control form-control-sm" required>
                     </div>
+                    <div class="mb-3">
+                        <label for="texture_worst" class="form-label">Texture Worst:</label>
+                        <input type="text" name="texture_worst" class="form-control form-control-sm" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="area_se" class="form-label">Area SE:</label>
+                        <input type="text" name="area_se" class="form-control form-control-sm" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="concavity_se" class="form-label">Concavity SE:</label>
+                        <input type="text" name="concavity_se" class="form-control form-control-sm" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="perimeter_se" class="form-label">Perimeter SE:</label>
+                        <input type="text" name="perimeter_se" class="form-control form-control-sm" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="radius_se" class="form-label">Radius SE:</label>
+                        <input type="text" name="radius_se" class="form-control form-control-sm" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="fractal_dimension_se" class="form-label">Fractal Dimension SE:</label>
+                        <input type="text" name="fractal_dimension_se" class="form-control form-control-sm" required>
+                    </div>
                 </div>
-            </div>
-
+            
             <!-- Custom Predict button -->
-            <button type="submit" class="btn btn-custom w-100">Click to Predict</button>
+            <div class="text-center mb-3">
+                <button type="submit" class="btn btn-custom w-75">Click to Predict</button>
+            </div>
         </form>
         
-        <!-- Button to clear fields and go back to home page -->
-        <button type="button" class="btn btn-secondary" onclick="clearFields()">Clear Fields</button> 
-        <a class="btn btn-secondary" href="http://127.0.0.1:5000/">Home</a>
-    </div>
+            <!-- Button to clear fields and go back to home page -->
+            <div class="text-center mb-3">
+                <button type="button" class="btn btn-secondary w-25" onclick="clearFields()">Clear Fields</button> 
+                <a class="btn btn-secondary w-25" href="http://127.0.0.1:5000/">Home</a>
+            </div>
 
     <script src="https://d3js.org/d3.v7.min.js"></script>
     <script src="./static/js/scripts.js"></script>
