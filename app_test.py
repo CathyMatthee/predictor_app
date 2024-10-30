@@ -20,7 +20,6 @@ import psycopg2
 import joblib
 from sklearn.ensemble import VotingClassifier
 import statistics as st
-from collections import Counter
 
 # Read the database password from the environment variable in AWS for deployment
 # password = os.getenv('DB_PASSWORD')
@@ -170,7 +169,6 @@ def result():
         model_1 = joblib.load('Saved_Models/tuned_logistic_regression_model.pkl')
         # Make a prediction using the scaled features
         prediction_1 = model_1.predict(features)
-        print(f"LG Pred: {prediction_1[0]}")
         ####################################################
         # Model 2: Load the pre-trained SVM                       
         model_2 = joblib.load('Saved_Models/svm_forapp.pkl') 
@@ -180,39 +178,26 @@ def result():
         svm_scaled = scaler.transform(features)
         svm_features = selector.transform(svm_scaled)
         prediction_2 = model_2.predict(svm_features)
-        print(f"SVM Pred: {prediction_2[0]}")
         ####################################################
         # Model 3: Load the pre-trained Random Forest                                           
         model_3 = joblib.load('Saved_Models/rf_model.pkl')
         prediction_3 = model_3.predict(features)
-        print(f"RF Pred: {prediction_3[0]}")
         ####################################################
         # Model 4: Load the pre-trained Keras Tuner
         model_4 = joblib.load('Saved_Models/kt_best_model.pkl') 
         prediction_4 = np.ravel(model_4.predict(features))
-        print(f"KT Pred: {int(prediction_4[0])}")
         ####################################################       
         # prediction_5 = model_5.predict(model_5)
         # FINAL_PREDICTION USING ENSEMBLE METHOD
         prediction_5 = st.mode([prediction_1[0], prediction_2[0], prediction_3[0], int(prediction_4[0])])
-        pred_counts = Counter([prediction_1[0], prediction_2[0], prediction_3[0], int(prediction_4[0])])
-
-        print(f"Original Ensemble Pred: {prediction_5}")
-        print(f"{pred_counts}")
-        #Resolve ties in max vote ensemble
-        if pred_counts[prediction_5] > 1:
-            # Tie-breaking strategy: Preference Random Forest Model 3
-            # Because it is also an ensemble method and we can determine the features' importances
-            prediction_5 = prediction_3[0]
-            print("There was an ensemble tie!!!")
-        print(f"EM Pred: {prediction_5}")
+        print(prediction_5)
 
         # Print Predictions
         print(f"LG Pred: {prediction_1[0]}")
-        print(f"SVM Pred: {prediction_2[0]}")
-        print(f"RF Pred: {prediction_3[0]}")
-        print(f"KT Pred: {int(prediction_4[0])}")
-        print(f"EM Pred: {prediction_5}")
+        print(f"LG Pred: {prediction_2[0]}")
+        print(f"LG Pred: {prediction_3[0]}")
+        print(f"LG Pred: {int(prediction_4[0])}")
+        print(f"LG Pred: {prediction_5}")
 
         log_pred_text_1 = "Malignant" if prediction_1[0] == 1 else "Benign"  # Assuming binary classification
         log_pred_text_2 = "Malignant" if prediction_2[0] == 1 else "Benign"  # Assuming binary classification
